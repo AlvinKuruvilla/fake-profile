@@ -1,32 +1,3 @@
-# user_df
-# KHTdict = {}
-# key, event, time
-# 'h', 'P', 123
-# 'h', 'R', 128
-# 'o', 'P', 132
-# 'o', 'R', 139
-# 'h', 'P', 143
-# 'h', 'R', 148
-# 'o', 'P', 152
-# 'o', 'R', 159
-# for key in user_df:
-#   if event == P:
-#     press_time = time
-#   if event == R:
-#     release_time = time
-#     new_kht = release_time-press_time
-#     if key not in KHTdict:
-#       KHTdict[key] = [new_kht]
-#     else:
-#       KHTdict[key].append(new_kht)
-
-# # Output:
-# KHTdict = {'h':[5, 7], 'o':[7, 7]}
-# KITdict1 = [] # just use one of them now, maybe first P to the last R!!
-# # see the literature to figure out which one people use
-# # KITdict2
-# # KITdict3
-# # KITdict4
 import pandas as pd
 import numpy as np
 import csv
@@ -55,29 +26,17 @@ release = {}
 users = main_df['user_ids'].unique()
 platforms = main_df['platform_ids'].unique()
 users.sort()
-kht = {}
 kit_pp = {}
 kit_pr = {}
 kit_rp = {}
 kit_rr = {}
 for user in users[:5]: # traversing through all the users
     for platform in platforms: # traversting through the platform
-        for key in keys[:6]: # just running for first few keys to verify
-            press_df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform) & (key == main_df['key']) & (main_df['direction'] == 'P')]
-            release_df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform) & (key == main_df['key']) & (main_df['direction'] == 'R')]
-            # print(f'press_df: {press_df.head()}')
-            # print(f'press_df: {press_df.tail()}')
-            # print(f'release_df: {release_df.head()}')
-            # print(f'release_df: {release_df.tail()}')
-            press_times = press_df['time'].tolist()
-            release_times = release_df['time'].tolist()
-            # print(f'press_times:{press_times}')
-            # print(f'release_times:{release_times}')
-            correct_timing_pairs, _, _ = utility.find_pairs(press_times, release_times)
-            print(f'for user: {user}, platfrom: {platform}, letter: {key}, correct_timing_pairs: {correct_timing_pairs}') # dig in this further.
-            khtimings = [pair[1]-pair[0] for pair in correct_timing_pairs] # release: pair[1], press: pair[0]
-            kht[key] = khtimings
-            print(f'number of ocurrences: {len(khtimings)}, kht:{kht[key]}')
+        press_df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform) & (main_df['direction'] == 'P')]
+        release_df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform) & (main_df['direction'] == 'R')]
+        print(f'press_df---------{press_df}')
+        print(f'release_df---------{release_df}')
+
 
 
 # main_df.key = main_df.key.astype(str)
@@ -188,19 +147,19 @@ for user in users[:5]: # traversing through all the users
 #
 #
 
-for user in users:
-    for platform in platforms:
-        # Slicing the dataframe for the current user
-        df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform)]
-        if df['direction'][0] == 'P':
-            pos = 0
-        else:
-            pos = 1
-        window = 4
-        slide = window//2
-        for pos in range(pos, df.shape[0] - window - pos, slide):
-            df_window = df.iloc[pos:pos + window, :]
-            print(df_window.head())
+# for user in users:
+#     for platform in platforms:
+#         # Slicing the dataframe for the current user
+#         df = main_df[(main_df['user_ids'] == user) & (main_df['platform_ids'] == platform)]
+#         if df['direction'][0] == 'P':
+#             pos = 0
+#         else:
+#             pos = 1
+#         window = 4
+#         slide = window//2
+#         for pos in range(pos, df.shape[0] - window - pos, slide):
+#             df_window = df.iloc[pos:pos + window, :]
+#             print(df_window.head())
 
         # events = df['direction'].unique()
         # unique_keys = df['key'].unique()
