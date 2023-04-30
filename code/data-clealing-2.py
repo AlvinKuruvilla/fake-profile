@@ -47,6 +47,3 @@ for user in users[:2]: # traversing through all the users
                         print('release_row[direction]',type(release_row[direction][0]))
                         print(f'release_row[direction] == "R" failed and skipping {release_index}th row....')
                 release_index=release_index+1
-
-
-
