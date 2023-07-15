@@ -19,6 +19,14 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
     print(f"user_id:{user_id}")
     df = read_compact_format()
     if session_id is None:
+        if isinstance(platform_id, list):
+            # Should only contain an inclusive range of the starting id and ending id
+            assert len(platform_id) == 2
+            return df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"].between(platform_id[0], platform_id[1]))
+            ]
+
         return df[(df["user_ids"] == user_id) & (df["platform_id"] == platform_id)]
     if isinstance(session_id, list):
         # Should only contain an inclusive range of the starting id and ending id
@@ -28,6 +36,7 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
             & (df["platform_id"] == platform_id)
             & (df["session_id"].between(session_id[0], session_id[1]))
         ]
+
     return df[
         (df["user_ids"] == user_id)
         & (df["platform_id"] == platform_id)
@@ -42,8 +51,8 @@ class HeatMap:
     def make_kht_matrix(
         self, enroll_platform_id, probe_platform_id, enroll_session_id, probe_session_id
     ):
-        if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
-            raise ValueError("Platform ID must be between 1 and 3")
+        # if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
+        #     raise ValueError("Platform ID must be between 1 and 3")
 
         matrix = []
         # TODO: We have to do a better job of figuring out how many users there
@@ -82,8 +91,8 @@ class HeatMap:
         probe_session_id,
         kit_feature_type,
     ):
-        if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
-            raise ValueError("Platform ID must be between 1 and 3")
+        # if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
+        #     raise ValueError("Platform ID must be between 1 and 3")
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
@@ -119,8 +128,8 @@ class HeatMap:
         probe_session_id,
         kit_feature_type,
     ):
-        if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
-            raise ValueError("Platform ID must be between 1 and 3")
+        # if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
+        #     raise ValueError("Platform ID must be between 1 and 3")
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
