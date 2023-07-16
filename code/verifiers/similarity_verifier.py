@@ -1,5 +1,5 @@
 import statistics
-from verifiers.verifier import Verifier
+from verifiers_library.verifier import Verifier
 
 
 class SimilarityVerifier(Verifier):

@@ -1,5 +1,5 @@
 import statistics
-from verifiers.ecdf import ECDF
+from ecdf import ECDF
 import numpy as np
 
 
@@ -11,12 +11,15 @@ class Verifiers:
         # feature names could also mean pair of letters for KIT or diagraphs
         # feature names could also mean pair of sequence of three letters for trigraphs
         # feature names can be extedned to any features that we can extract from keystrokes
-
         self.pattern1 = p1
         self.pattern2 = p2
-        self.common_features = set(self.pattern1.keys()).intersection(
-            set(self.pattern2.keys())
-        )
+        self.pattern1threshold = 5 # sort of feature selection, if we dont have
+        self.pattern2threshold = 2  # sort of feature selection, if we dont have
+        self.common_features = []
+        for feature in self.pattern1.keys():
+            if feature in self.pattern2.keys():
+                if len(self.pattern1[feature]) >= self.pattern1threshold and len(self.pattern2[feature]) >= self.pattern2threshold:
+                    self.common_features.append(feature)
         # print('self.common_features:', self.common_features)
 
     def get_abs_match_score(self):  # A verifier
@@ -118,7 +121,8 @@ class Verifiers:
         return statistics.mean(self.pattern2[key])
 
     def ecdf_of_x(self, key, x_i):
-        # The ITAD algorithm requires that we get CDF(x_i)
+        # The ITAD algorithm requires that we get CDFg_i(x_i)
+        # Basically what is means is get the cdf of the feature gi a
         # To do that we first get all the timing values of the key
         # We then append the (at the point of calling this function) calculated x_i value
 
@@ -164,15 +168,25 @@ class Verifiers:
         return (x, y)
 
     def scaled_manhattan_distance(self):
-        if self.common_features == 0:
+        if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
+            print('dig deeper: there is no common feature to match!')
             return 0
-        inner = 0
+        grand_sum = 0
+        number_of_instances_compared = 0
         for feature in self.common_features:
-            u_g = statistics.mean(self.pattern1[feature])
+            print('comparing the feature:', feature)
+            mu_g = statistics.mean(self.pattern1[feature])
             std_g = statistics.stdev(self.pattern1[feature])
+            print(f'mu_g:{mu_g}, and std_g:{std_g}')
             for x_i in self.pattern2[feature]:
-                inner += abs(u_g - x_i) / std_g
-        return inner / len(self.common_features)
+                print('x_i:', x_i)
+                current_dist = abs(mu_g - x_i) / std_g
+                print('current_dist:', current_dist)
+                grand_sum = grand_sum+current_dist
+                print('grand_sum:', grand_sum)
+                number_of_instances_compared = number_of_instances_compared+1
+        print('number_of_instances_compared', number_of_instances_compared)
+        return grand_sum / number_of_instances_compared
 
 
 # local testing
@@ -200,9 +214,14 @@ pattern2 = {
 
 
 ExampleVerifier = Verifiers(pattern1, pattern2)
-print("get_abs_match_score():", ExampleVerifier.get_abs_match_score())
-print("get_similarity_score():", ExampleVerifier.get_similarity_score())
-print(
-    "get_weighted_similarity_score():", ExampleVerifier.get_weighted_similarity_score()
-)
-print("itad_similarity():", ExampleVerifier.itad_similarity())
+# print("get_abs_match_score():", ExampleVerifier.get_abs_match_score())
+# print("get_similarity_score():", ExampleVerifier.get_similarity_score())
+# print(
+#     "get_weighted_similarity_score():", ExampleVerifier.get_weighted_similarity_score()
+# )
+# print("itad_similarity():", ExampleVerifier.itad_similarity())
+
+print("scaled_manhattan_distance() diff:", ExampleVerifier.scaled_manhattan_distance())
+
+ExampleVerifier = Verifiers(pattern1, pattern1)
+print("scaled_manhattan_distance() same:", ExampleVerifier.scaled_manhattan_distance())

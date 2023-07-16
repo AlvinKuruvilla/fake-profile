@@ -1,4 +1,4 @@
-from verifiers.verifier import Verifier
+from verifiers_library.verifier import Verifier
 
 
 def max_disorder(n):
