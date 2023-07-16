@@ -163,6 +163,17 @@ class Verifiers:
         y = np.arange(1, n + 1) / n
         return (x, y)
 
+    def scaled_manhattan_distance(self):
+        if self.common_features == 0:
+            return 0
+        inner = 0
+        for feature in self.common_features:
+            u_g = statistics.mean(self.pattern1[feature])
+            std_g = statistics.stdev(self.pattern1[feature])
+            for x_i in self.pattern2[feature]:
+                inner += abs(u_g - x_i) / std_g
+        return inner / len(self.common_features)
+
 
 # local testing
 
