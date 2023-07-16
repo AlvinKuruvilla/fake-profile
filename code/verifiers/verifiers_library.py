@@ -184,7 +184,7 @@ pattern2 = {
 }
 
 
-ExampleVerifier = Verifiers(pattern1, pattern2)
+ExampleVerifier = Verifiers(pattern2, pattern1)
 # # print("get_abs_match_score():", ExampleVerifier.get_abs_match_score())
 # # print("get_similarity_score():", ExampleVerifier.get_similarity_score())
 # # print(
