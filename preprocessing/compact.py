@@ -3,7 +3,6 @@ import pandas as pd
 from tqdm import tqdm
 import csv
 
-
 # https://stackoverflow.com/questions/18172851/deleting-dataframe-row-in-pandas-based-on-column-value
 def remove_invalid_keystrokes(df):
     # A helper function that takes as input a dataframe, and return a new

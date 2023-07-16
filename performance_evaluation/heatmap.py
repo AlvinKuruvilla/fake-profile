@@ -1,22 +1,28 @@
+import os
+import sys
+path = os.path.dirname(os.getcwd())
+print(path)
+sys.path.insert(0, path)
+
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
+from classifiers.template_generator import read_compact_format
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
-from verifiers.template_generator import read_compact_format
-from verifiers.verifiers_library import Verifiers
+import classifiers.verifiers_library as vl
 from tqdm import tqdm
 
 
 class VerifierType(enum.Enum):
-    Relative = 1
-    Similarity = 2
-    SimilarityUnweighted = 3
-    Absolute = 4
-    Itad = 5
+    RELATIVE = 1
+    SIMILARITY = 2
+    SIMILARITY_UNWEIGHTED = 3
+    ABSOLUTE = 4
+    ITAD = 5
 
 
 def get_user_by_platform(user_id, platform_id, session_id=None):
-    print(f"user_id:{user_id}")
+    print(f"user_id:{user_id}", end=" | ")
     df = read_compact_format()
     if session_id is None:
         if isinstance(platform_id, list):
@@ -47,6 +53,7 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
 class HeatMap:
     def __init__(self, verifier_type):
         self.verifier_type = verifier_type  # The verifier class to be used
+        print(f'----selected {verifier_type}')
 
     def make_kht_matrix(
         self, enroll_platform_id, probe_platform_id, enroll_session_id, probe_session_id
@@ -67,10 +74,10 @@ class HeatMap:
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 probe = create_kht_data_from_df(df)
-                v = Verifiers(enrollment, probe)
-                if self.verifier_type == VerifierType.Absolute:
+                v = vl.Verify(enrollment, probe)
+                if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
-                elif self.verifier_type == VerifierType.Similarity:
+                elif self.verifier_type == VerifierType.SIMILARITY:
                     row.append(v.get_weighted_similarity_score())
                 elif self.verifier_type == VerifierType.SimilarityUnweighted:
                     row.append(v.get_similarity_score())
@@ -104,14 +111,14 @@ class HeatMap:
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 probe = create_kit_data_from_df(df, kit_feature_type)
-                v = Verifiers(enrollment, probe)
-                if self.verifier_type == VerifierType.Absolute:
+                v = vl.Verify(enrollment, probe)
+                if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
-                elif self.verifier_type == VerifierType.Similarity:
+                elif self.verifier_type == VerifierType.SIMILARITY:
                     row.append(v.get_weighted_similarity_score())
-                elif self.verifier_type == VerifierType.SimilarityUnweighted:
+                elif self.verifier_type == VerifierType.SIMILARITY_UNWEIGHTED:
                     row.append(v.get_similarity_score())
-                elif self.verifier_type == VerifierType.Itad:
+                elif self.verifier_type == VerifierType.ITAD:
                     row.append(v.itad_similarity())
                 else:
                     raise ValueError(
@@ -145,14 +152,14 @@ class HeatMap:
                 kht_probe = create_kht_data_from_df(df)
                 kit_probe = create_kit_data_from_df(df, kit_feature_type)
                 combined_probe = kht_probe | kit_probe
-                v = Verifiers(combined_enrollment, combined_probe)
-                if self.verifier_type == VerifierType.Absolute:
+                v = vl.Verify(combined_enrollment, combined_probe)
+                if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
-                elif self.verifier_type == VerifierType.Similarity:
+                elif self.verifier_type == VerifierType.SIMILARITY:
                     row.append(v.get_weighted_similarity_score())
-                elif self.verifier_type == VerifierType.SimilarityUnweighted:
+                elif self.verifier_type == VerifierType.SIMILARITY_UNWEIGHTED:
                     row.append(v.get_similarity_score())
-                elif self.verifier_type == VerifierType.Itad:
+                elif self.verifier_type == VerifierType.ITAD:
                     row.append(v.itad_similarity())
                 else:
                     raise ValueError(

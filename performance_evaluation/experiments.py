@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.metrics import top_k_accuracy_score
-from verifiers.heatmap import HeatMap, VerifierType
+from code.heatmaps.heatmap import HeatMap, VerifierType
 from tabulate import tabulate
 
 
