@@ -20,7 +20,7 @@ class Verifiers:
             if feature in self.pattern2.keys():
                 if len(self.pattern1[feature]) >= self.pattern1threshold and len(self.pattern2[feature]) >= self.pattern2threshold:
                     self.common_features.append(feature)
-        print(f'comparing {len(self.common_features)} common_features')
+        print(f'comparing {len(self.common_features)} common_features between the reference and the probe')
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
