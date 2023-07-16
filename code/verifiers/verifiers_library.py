@@ -1,10 +1,9 @@
 import statistics
-from ecdf import ECDF
-import numpy as np
+from verifiers.ecdf import ECDF
 
 
 class Verifiers:
-    def __init__(self, p1, p2):
+    def __init__(self, p1, p2, pattern1_threshold=5, pattern2_threshold=2):
         # p1 and p2 are dictionaries of features
         # keys in the dictionaries would be the feature names
         # feature names mean individual letters for KHT
@@ -13,14 +12,23 @@ class Verifiers:
         # feature names can be extedned to any features that we can extract from keystrokes
         self.pattern1 = p1
         self.pattern2 = p2
-        self.pattern1threshold = 10 # sort of feature selection, if we dont have
-        self.pattern2threshold = 2  # sort of feature selection, if we dont have
+        self.pattern1threshold = (
+            pattern1_threshold  # sort of feature selection, if we dont have
+        )
+        self.pattern2threshold = (
+            pattern2_threshold  # sort of feature selection, if we dont have
+        )
         self.common_features = []
         for feature in self.pattern1.keys():
             if feature in self.pattern2.keys():
-                if len(self.pattern1[feature]) >= self.pattern1threshold and len(self.pattern2[feature]) >= self.pattern2threshold:
+                if (
+                    len(self.pattern1[feature]) >= self.pattern1threshold
+                    and len(self.pattern2[feature]) >= self.pattern2threshold
+                ):
                     self.common_features.append(feature)
-        print(f'comparing {len(self.common_features)} common_features between the reference and the probe')
+        print(
+            f"comparing {len(self.common_features)} common_features between the reference and the probe"
+        )
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
@@ -120,13 +128,15 @@ class Verifiers:
     def get_cdf_xi(self, distribution, sample):
         ecdf = ECDF(distribution)
         prob = ecdf(sample)
-        print('prob:', prob)
+        print("prob:", prob)
         return prob
 
     def itad_similarity(self):  # The new one
         # https://www.scitepress.org/Papers/2023/116841/116841.pdf
-        if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
-            print('dig deeper: there is no common feature to match!')
+        if (
+            len(self.common_features) == 0
+        ):  # this needs to be checked further when and why and for which users or cases it might hapens at all
+            print("dig deeper: there is no common feature to match!")
             return 0
         similarities = []
         for feature in self.common_features:
@@ -135,29 +145,33 @@ class Verifiers:
                 if x_i <= M_g_i:
                     similarities.append(self.get_cdf_xi(self.pattern1[feature], x_i))
                 else:
-                    similarities.append(1- self.get_cdf_xi(self.pattern1[feature], x_i))
+                    similarities.append(
+                        1 - self.get_cdf_xi(self.pattern1[feature], x_i)
+                    )
 
         return statistics.mean(similarities)
 
     def scaled_manhattan_distance(self):
-        if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
-            print('dig deeper: there is no common feature to match!')
+        if (
+            len(self.common_features) == 0
+        ):  # this needs to be checked further when and why and for which users or cases it might hapens at all
+            print("dig deeper: there is no common feature to match!")
             return 0
         grand_sum = 0
         number_of_instances_compared = 0
         for feature in self.common_features:
-            print('comparing the feature:', feature)
+            print("comparing the feature:", feature)
             mu_g = statistics.mean(self.pattern1[feature])
             std_g = statistics.stdev(self.pattern1[feature])
-            print(f'mu_g:{mu_g}, and std_g:{std_g}')
+            print(f"mu_g:{mu_g}, and std_g:{std_g}")
             for x_i in self.pattern2[feature]:
-                print('x_i:', x_i)
+                print("x_i:", x_i)
                 current_dist = abs(mu_g - x_i) / std_g
-                print('current_dist:', current_dist)
-                grand_sum = grand_sum+current_dist
-                print('grand_sum:', grand_sum)
-                number_of_instances_compared = number_of_instances_compared+1
-        print('number_of_instances_compared', number_of_instances_compared)
+                print("current_dist:", current_dist)
+                grand_sum = grand_sum + current_dist
+                print("grand_sum:", grand_sum)
+                number_of_instances_compared = number_of_instances_compared + 1
+        print("number_of_instances_compared", number_of_instances_compared)
         return grand_sum / number_of_instances_compared
 
 
@@ -201,4 +215,3 @@ print("itad_similarity() diff:", ExampleVerifier.itad_similarity())
 
 ExampleVerifier = Verifiers(pattern1, pattern1)
 print("itad_similarity() same:", ExampleVerifier.itad_similarity())
-
