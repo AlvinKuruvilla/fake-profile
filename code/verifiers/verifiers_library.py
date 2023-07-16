@@ -148,10 +148,9 @@ class Verifiers:
 
     def itad_similarity(self, p=0.5):
         total = 0
-        matching_keys = self.common_features
-        for key in matching_keys:
-            x = self.x_i(key)
-            itad_value = self.itad_metric(key, x) * p
+        for feature in self.common_features:
+            x = self.x_i(feature)
+            itad_value = self.itad_metric(feature, x) * p
             total += itad_value
         try:
             return (1 / len(self.common_features)) * total
@@ -159,6 +158,19 @@ class Verifiers:
             # TODO: When running the heatmaps with cleaned2.csv, this ValueError gets proced
             return 0
             raise ValueError("Zero division occured: no common key found!")
+
+    def itad_distance(self):  # The new one
+        # https://www.scitepress.org/Papers/2023/116841/116841.pdf
+        if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
+            print('dig deeper: there is no common feature to match!')
+            return 0
+        similarities = []
+        for feature in self.common_features:
+            M_g_i = statistics.median(self.pattern1[feature])
+            for x_i in self.pattern2[feature]:
+                if x_i <= M_g_i:
+                    similarities.append(self.get_cdf_xi(self.pattern1[feature], x_i))
+        return statistics.sum(similarities) / len(similarities)
 
     def compute_ecdf(self, data):
         """Compute ECDF"""
