@@ -117,49 +117,12 @@ class Verifiers:
             raise ValueError(str(key) + " is not in common keys")
         return statistics.median(self.pattern1[key])
 
-    def x_i(self, key):
-        return statistics.mean(self.pattern2[key])
+    def get_cdf_xi(self, distribution, sample):
+        ecdf = ECDF(distribution)
+        prob = ecdf(sample)
+        return prob
 
-    def ecdf_of_x(self, key, x_i):
-        # The ITAD algorithm requires that we get CDFg_i(x_i)
-        # Basically what is means is get the cdf of the feature gi a
-        # To do that we first get all the timing values of the key
-        # We then append the (at the point of calling this function) calculated x_i value
-
-        # After getting the y values for the data by calling the ecdf function, we get the specific y_value for x_i by assuming
-        # that each y_value in the list is a 1-1 match to sorted x_values. So by finding the index of x_i in the sorted x_values
-        # we can find the corresponding y value by y_vals[x_i_index]
-        data = list(self.pattern2[key])
-        data.append(x_i)
-        x_vals, y_vals = self.compute_ecdf(data)
-        data = list(np.sort(data))
-        x_i_index = data.index(x_i)
-        return y_vals[x_i_index]
-
-    def itad_metric(self, key, sample_duration):
-        # In the context of this function, the sample_duration is x_i in the algorithm (in our case, it will be the probe mean)
-        m_x = self.get_median_of_common_key(key)
-        ecdf = ECDF(self.pattern2[key])
-        if sample_duration <= m_x:
-            # return self.ecdf_of_x(key, sample_duration)
-            return ecdf(sample_duration)
-        # return 1 - self.ecdf_of_x(key, sample_duration)
-        return 1 - ecdf(sample_duration)
-
-    def itad_similarity(self, p=0.5):
-        total = 0
-        for feature in self.common_features:
-            x = self.x_i(feature)
-            itad_value = self.itad_metric(feature, x) * p
-            total += itad_value
-        try:
-            return (1 / len(self.common_features)) * total
-        except ZeroDivisionError:
-            # TODO: When running the heatmaps with cleaned2.csv, this ValueError gets proced
-            return 0
-            raise ValueError("Zero division occured: no common key found!")
-
-    def itad_distance(self):  # The new one
+    def itad_similarity(self):  # The new one
         # https://www.scitepress.org/Papers/2023/116841/116841.pdf
         if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
             print('dig deeper: there is no common feature to match!')
@@ -170,14 +133,10 @@ class Verifiers:
             for x_i in self.pattern2[feature]:
                 if x_i <= M_g_i:
                     similarities.append(self.get_cdf_xi(self.pattern1[feature], x_i))
-        return statistics.sum(similarities) / len(similarities)
+                else:
+                    similarities.append(1- self.get_cdf_xi(self.pattern1[feature], x_i))
 
-    def compute_ecdf(self, data):
-        """Compute ECDF"""
-        x = np.sort(data)
-        n = x.size
-        y = np.arange(1, n + 1) / n
-        return (x, y)
+        return statistics.mean(similarities)
 
     def scaled_manhattan_distance(self):
         if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
@@ -226,14 +185,19 @@ pattern2 = {
 
 
 ExampleVerifier = Verifiers(pattern1, pattern2)
-# print("get_abs_match_score():", ExampleVerifier.get_abs_match_score())
-# print("get_similarity_score():", ExampleVerifier.get_similarity_score())
-# print(
-#     "get_weighted_similarity_score():", ExampleVerifier.get_weighted_similarity_score()
-# )
-# print("itad_similarity():", ExampleVerifier.itad_similarity())
-
-print("scaled_manhattan_distance() diff:", ExampleVerifier.scaled_manhattan_distance())
+# # print("get_abs_match_score():", ExampleVerifier.get_abs_match_score())
+# # print("get_similarity_score():", ExampleVerifier.get_similarity_score())
+# # print(
+# #     "get_weighted_similarity_score():", ExampleVerifier.get_weighted_similarity_score()
+# # )
+# # print("itad_similarity():", ExampleVerifier.itad_similarity())
+#
+# print("scaled_manhattan_distance() diff:", ExampleVerifier.scaled_manhattan_distance())
+#
+# ExampleVerifier = Verifiers(pattern1, pattern1)
+# print("scaled_manhattan_distance() same:", ExampleVerifier.scaled_manhattan_distance())
+print("itad_similarity() diff:", ExampleVerifier.itad_similarity())
 
 ExampleVerifier = Verifiers(pattern1, pattern1)
-print("scaled_manhattan_distance() same:", ExampleVerifier.scaled_manhattan_distance())
+print("itad_similarity() same:", ExampleVerifier.itad_similarity())
+
