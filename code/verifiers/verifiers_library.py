@@ -20,7 +20,7 @@ class Verifiers:
             if feature in self.pattern2.keys():
                 if len(self.pattern1[feature]) >= self.pattern1threshold and len(self.pattern2[feature]) >= self.pattern2threshold:
                     self.common_features.append(feature)
-        # print('self.common_features:', self.common_features)
+        print(f'comparing {len(self.common_features)} common_features')
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
@@ -35,14 +35,14 @@ class Verifiers:
             # print(f"self.pattern1[feature]:{self.pattern1[feature]}")
             # print(f"self.pattern2[feature]:{self.pattern2[feature]}")
 
-            pattern1_mean = statistics.mean(self.pattern1[feature])
-            pattern2_mean = statistics.mean(self.pattern2[feature])
-            if min(pattern1_mean, pattern2_mean) == 0:
+            pattern1_median = statistics.median(self.pattern1[feature])
+            pattern2_median = statistics.median(self.pattern2[feature])
+            if min(pattern1_median, pattern2_median) == 0:
                 return 0  # Must look into and fix this! just a temporary arrangment
                 # raise ValueError('min of means is zero, should not happen!')
             else:
-                ratio = max(pattern1_mean, pattern2_mean) / min(
-                    pattern1_mean, pattern2_mean
+                ratio = max(pattern1_median, pattern2_median) / min(
+                    pattern1_median, pattern2_median
                 )
             # the following threshold is what we thought would be good
             # we have not analyzed it yet!
