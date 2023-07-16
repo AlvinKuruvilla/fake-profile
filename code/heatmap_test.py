@@ -18,7 +18,7 @@ def calculate_rankn_accuracy(similarity_matrix, n):
     return rankn_accuracy
 
 
-heatmap = HeatMap(VerifierType.Absolute)
+heatmap = HeatMap(VerifierType.Itad)
 # matrix = heatmap.combined_keystroke_matrix(1, 1, None, None, 1)
 # print(matrix)
 # heatmap.plot_heatmap(matrix, "FF Combined Absolute (new file)")

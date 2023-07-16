@@ -13,7 +13,7 @@ class Verifiers:
         # feature names can be extedned to any features that we can extract from keystrokes
         self.pattern1 = p1
         self.pattern2 = p2
-        self.pattern1threshold = 5 # sort of feature selection, if we dont have
+        self.pattern1threshold = 10 # sort of feature selection, if we dont have
         self.pattern2threshold = 2  # sort of feature selection, if we dont have
         self.common_features = []
         for feature in self.pattern1.keys():
@@ -120,6 +120,7 @@ class Verifiers:
     def get_cdf_xi(self, distribution, sample):
         ecdf = ECDF(distribution)
         prob = ecdf(sample)
+        print('prob:', prob)
         return prob
 
     def itad_similarity(self):  # The new one

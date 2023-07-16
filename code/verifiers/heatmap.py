@@ -2,8 +2,8 @@ import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
-from verifiers_library.template_generator import read_compact_format
-from verifiers_library.verifiers import Verifiers
+from verifiers.template_generator import read_compact_format
+from verifiers.verifiers_library import Verifiers
 from tqdm import tqdm
 
 
