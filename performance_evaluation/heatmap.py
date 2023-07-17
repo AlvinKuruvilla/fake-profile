@@ -1,16 +1,16 @@
 import os
 import sys
-path = os.path.dirname(os.getcwd())
-print(path)
-sys.path.insert(0, path)
-
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
+from tqdm import tqdm
 from classifiers.template_generator import read_compact_format
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
 import classifiers.verifiers_library as vl
-from tqdm import tqdm
+
+path = os.path.dirname(os.getcwd())
+print(path)
+sys.path.insert(0, path)
 
 
 class VerifierType(enum.Enum):
@@ -53,7 +53,7 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
 class HeatMap:
     def __init__(self, verifier_type):
         self.verifier_type = verifier_type  # The verifier class to be used
-        print(f'----selected {verifier_type}')
+        print(f"----selected {verifier_type}")
 
     def make_kht_matrix(
         self, enroll_platform_id, probe_platform_id, enroll_session_id, probe_session_id
@@ -79,9 +79,9 @@ class HeatMap:
                     row.append(v.get_abs_match_score())
                 elif self.verifier_type == VerifierType.SIMILARITY:
                     row.append(v.get_weighted_similarity_score())
-                elif self.verifier_type == VerifierType.SimilarityUnweighted:
+                elif self.verifier_type == VerifierType.SIMILARITY_UNWEIGHTED:
                     row.append(v.get_similarity_score())
-                elif self.verifier_type == VerifierType.Itad:
+                elif self.verifier_type == VerifierType.ITAD:
                     row.append(v.itad_similarity())
                 else:
                     raise ValueError(
