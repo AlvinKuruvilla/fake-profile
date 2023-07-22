@@ -1,5 +1,7 @@
 import statistics
 from classifiers.ecdf import ECDF
+
+
 class Verify:
     def __init__(self, p1, p2):
         # p1 and p2 are dictionaries of features
@@ -7,17 +9,28 @@ class Verify:
         # feature names mean individual letters for KHT
         # feature names could also mean pair of letters for KIT or diagraphs
         # feature names could also mean pair of sequence of three letters for trigraphs
-        # feature names can be extedned to any features that we can extract from keystrokes
+        # feature names can be extended to any features that we can extract from keystrokes
         self.pattern1 = p1
         self.pattern2 = p2
-        self.pattern1threshold = 3 # sort of feature selection, based on the availability
-        self.pattern2threshold = 1  # sort of feature selection, based on the availability
-        self.common_features = []
-        for feature in self.pattern1.keys():
-            if feature in self.pattern2.keys():
-                if len(self.pattern1[feature]) >= self.pattern1threshold and len(self.pattern2[feature]) >= self.pattern2threshold:
-                    self.common_features.append(feature)
-        print(f'comparing {len(self.common_features)} common_features')
+        # TODO: Replace the sett intersection with the thresholding code below
+        # self.pattern1threshold = (
+        #     10  # sort of feature selection, based on the availability
+        # )
+        # self.pattern2threshold = (
+        #     10  # sort of feature selection, based on the availability
+        # )
+        # self.common_features = []
+        # for feature in self.pattern1.keys():
+        #     if feature in self.pattern2.keys():
+        #         if (
+        #             len(self.pattern1[feature]) >= self.pattern1threshold
+        #             and len(self.pattern2[feature]) >= self.pattern2threshold
+        #         ):
+        #             self.common_features.append(feature)
+        # print(f"comparing {len(self.common_features)} common_features")
+        self.common_features = set(self.pattern1.keys()).intersection(
+            set(self.pattern2.keys())
+        )
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
@@ -58,7 +71,7 @@ class Verify:
             # raise ValueError("No common features to compare!")
         key_matches, total_features = 0, 0
         for feature in self.common_features:
-            pattern1_mean = statistics.mean(list(self.pattern1[feature]))
+            pattern1_median = statistics.median(list(self.pattern1[feature]))
             try:
                 pattern1_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:
@@ -72,8 +85,8 @@ class Verify:
 
             value_matches, total_values = 0, 0
             for time in self.pattern2[feature]:
-                if (pattern1_mean - pattern1_stdev) < time and time < (
-                    pattern1_mean + pattern1_stdev
+                if (pattern1_median - pattern1_stdev) < time and time < (
+                    pattern1_median + pattern1_stdev
                 ):
                     value_matches += 1
                 total_values += 1
@@ -122,8 +135,8 @@ class Verify:
 
     def itad_similarity(self):  # The new one
         # https://www.scitepress.org/Papers/2023/116841/116841.pdf
-        if len(self.common_features) == 0: # this wont happen at all, but just in case
-            print('dig deeper: there is no common feature to match!')
+        if len(self.common_features) == 0:  # this wont happen at all, but just in case
+            print("dig deeper: there is no common feature to match!")
             return 0
         similarities = []
         for feature in self.common_features:
@@ -132,12 +145,16 @@ class Verify:
                 if x_i <= M_g_i:
                     similarities.append(self.get_cdf_xi(self.pattern1[feature], x_i))
                 else:
-                    similarities.append(1- self.get_cdf_xi(self.pattern1[feature], x_i))
+                    similarities.append(
+                        1 - self.get_cdf_xi(self.pattern1[feature], x_i)
+                    )
         return statistics.mean(similarities)
 
     def scaled_manhattan_distance(self):
-        if len(self.common_features) == 0: # this needs to be checked further when and why and for which users or cases it might hapens at all
-            print('dig deeper: there is no common feature to match!')
+        if (
+            len(self.common_features) == 0
+        ):  # this needs to be checked further when and why and for which users or cases it might hapens at all
+            print("dig deeper: there is no common feature to match!")
             return 0
         grand_sum = 0
         number_of_instances_compared = 0
@@ -150,32 +167,55 @@ class Verify:
                 # print('x_i:', x_i)
                 current_dist = abs(mu_g - x_i) / std_g
                 # print('current_dist:', current_dist)
-                grand_sum = grand_sum+current_dist
+                grand_sum = grand_sum + current_dist
                 # print('grand_sum:', grand_sum)
-                number_of_instances_compared = number_of_instances_compared+1
+                number_of_instances_compared = number_of_instances_compared + 1
         # print('number_of_instances_compared', number_of_instances_compared)
         return grand_sum / number_of_instances_compared
+
 
 if __name__ == "__main__":
     # local testing arrangment
     pattern1 = {
         "W": [210, 220, 200, 230, 210, 220, 200, 230, 210, 220, 200, 230],
-        "E": [110,70, 25, 30, 35, 70, 115, 107, 110, 115, 107, 110, 115, 107],
+        "E": [110, 70, 25, 30, 35, 70, 115, 107, 110, 115, 107, 110, 115, 107],
         "L": [150, 130, 190, 120, 150, 130, 190, 120],
         "C": [25, 30, 35, 70, 25, 30, 35, 70, 25, 30, 35, 70, 25, 30, 35, 70],
         "O": [90, 40, 49, 90, 40, 49, 90, 40, 49, 90, 40, 49],
     }
     pattern2 = {
         "W": [11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16, 11, 12, 13, 14, 15, 16],
-        "E": [25, 30, 35, 70, 25, 30, 35, 70, 70, 25, 30, 35, 70, 70, 25, 30, 35, 70, 25, 30, 35, 70],
+        "E": [
+            25,
+            30,
+            35,
+            70,
+            25,
+            30,
+            35,
+            70,
+            70,
+            25,
+            30,
+            35,
+            70,
+            70,
+            25,
+            30,
+            35,
+            70,
+            25,
+            30,
+            35,
+            70,
+        ],
         "L": [1, 23, 21, 23, 43, 45, 64, 23, 43],
         "N": [9, 4, 12, 23, 21, 11, 9, 9, 4, 12, 23, 21, 11, 9],
         "S": [512, 621, 234, 257, 289, 512, 621, 234, 257, 289],
     }
 
-    print('----------------local testing results--------------------')
+    print("----------------local testing results--------------------")
     ExampleVerifier = Verify(pattern2, pattern1)
     print("itad_similarity() for diff patterns:", ExampleVerifier.itad_similarity())
     ExampleVerifier = Verify(pattern1, pattern1)
     print("itad_similarity() for same patterns:", ExampleVerifier.itad_similarity())
-

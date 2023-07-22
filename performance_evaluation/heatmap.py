@@ -3,9 +3,9 @@ import sys
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
-from tqdm import tqdm
 from classifiers.template_generator import read_compact_format
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
+from rich.progress import track
 import classifiers.verifiers_library as vl
 
 path = os.path.dirname(os.getcwd())
@@ -22,7 +22,7 @@ class VerifierType(enum.Enum):
 
 
 def get_user_by_platform(user_id, platform_id, session_id=None):
-    print(f"user_id:{user_id}", end=" | ")
+    # print(f"user_id:{user_id}", end=" | ")
     df = read_compact_format()
     if session_id is None:
         if isinstance(platform_id, list):
@@ -65,7 +65,7 @@ class HeatMap:
         # TODO: We have to do a better job of figuring out how many users there
         # are automatically so we don't need to keep changing it manually
         ids = [num for num in range(1, 26) if num != 22]
-        for i in ids:
+        for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kht_data_from_df(df)
             row = []
@@ -104,7 +104,7 @@ class HeatMap:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
         ids = [num for num in range(1, 26) if num != 22]
-        for i in tqdm(ids):
+        for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kit_data_from_df(df, kit_feature_type)
             row = []
@@ -141,7 +141,7 @@ class HeatMap:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
         ids = [num for num in range(1, 26) if num != 22]
-        for i in ids:
+        for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             kht_enrollment = create_kht_data_from_df(df)
             kit_enrollment = create_kit_data_from_df(df, kit_feature_type)

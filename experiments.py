@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.metrics import top_k_accuracy_score
-from heatmap import HeatMap, VerifierType
+from performance_evaluation.heatmap import HeatMap, VerifierType
 from tabulate import tabulate
 
 
@@ -16,7 +16,7 @@ def print_k_table(matrix, ids):
 
 
 def same_platform_even_split():
-    heatmap = HeatMap(VerifierType.SIMILARITY)
+    heatmap = HeatMap(VerifierType.ITAD)
 
     matrix = heatmap.combined_keystroke_matrix(1, 1, [1, 3], [4, 6], 1)
     matrix2 = heatmap.combined_keystroke_matrix(2, 2, [1, 3], [4, 6], 1)
@@ -33,7 +33,7 @@ def same_platform_even_split():
 
 
 def train_session_one_test_two():
-    heatmap = HeatMap(VerifierType.SIMILARITY)
+    heatmap = HeatMap(VerifierType.ITAD)
 
     matrix = heatmap.combined_keystroke_matrix(1, 1, 1, 4, 1)
     matrix2 = heatmap.combined_keystroke_matrix(2, 2, 1, 4, 1)
@@ -49,7 +49,7 @@ def train_session_one_test_two():
 
 
 def simple_cross_platform():
-    heatmap = HeatMap(VerifierType.SIMILARITY)
+    heatmap = HeatMap(VerifierType.ABSOLUTE)
 
     matrix = heatmap.combined_keystroke_matrix(1, 2, None, None, 1)
     matrix2 = heatmap.combined_keystroke_matrix(1, 3, None, None, 1)
@@ -79,7 +79,7 @@ def simple_cross_platform():
 
 
 def cross_platform_2v1():
-    heatmap = HeatMap(VerifierType.SIMILARITY)
+    heatmap = HeatMap(VerifierType.ITAD)
     matrix = heatmap.combined_keystroke_matrix([1, 2], 3, None, None, 1)
     matrix2 = heatmap.combined_keystroke_matrix([1, 3], 2, None, None, 1)
     matrix3 = heatmap.combined_keystroke_matrix([2, 3], 1, None, None, 1)
@@ -93,4 +93,4 @@ def cross_platform_2v1():
     print_k_table(matrix=matrix3, ids=ids)
 
 
-simple_cross_platform()
+same_platform_even_split()

@@ -1,11 +1,11 @@
 import numpy as np
 from sklearn.metrics import top_k_accuracy_score
-from heatmap import HeatMap, VerifierType
+from performance_evaluation.heatmap import HeatMap, VerifierType
 
-heatmap = HeatMap(VerifierType.ITAD)
+heatmap = HeatMap(VerifierType.SIMILARITY)
 matrix = heatmap.combined_keystroke_matrix(1, 1, None, None, 1)
 # print(matrix)
-# heatmap.plot_heatmap(matrix, "FF Combined Absolute (new file)")
+heatmap.plot_heatmap(matrix, "FF Combined (new) Similarity (new file)")
 # matrix = heatmap.make_kit_matrix(1, 1, [1, 3], [4, 6], 1)
 # heatmap.plot_heatmap(matrix, "Facebook KIT even split")
 
