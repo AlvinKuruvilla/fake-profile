@@ -51,8 +51,10 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
 
 
 class HeatMap:
-    def __init__(self, verifier_type):
+    def __init__(self, verifier_type, p1=10, p2=10):
         self.verifier_type = verifier_type  # The verifier class to be used
+        self.p1_threshold = p1
+        self.p2_threshold = p2
         print(f"----selected {verifier_type}")
 
     def make_kht_matrix(
@@ -74,7 +76,7 @@ class HeatMap:
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 probe = create_kht_data_from_df(df)
-                v = vl.Verify(enrollment, probe)
+                v = vl.Verify(enrollment, probe, self.p1_threshold, self.p2_threshold)
                 if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
                 elif self.verifier_type == VerifierType.SIMILARITY:

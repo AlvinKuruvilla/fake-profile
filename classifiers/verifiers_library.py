@@ -3,7 +3,7 @@ from classifiers.ecdf import ECDF
 
 
 class Verify:
-    def __init__(self, p1, p2):
+    def __init__(self, p1, p2, p1_t=10, p2_t=10):
         # p1 and p2 are dictionaries of features
         # keys in the dictionaries would be the feature names
         # feature names mean individual letters for KHT
@@ -14,10 +14,10 @@ class Verify:
         self.pattern2 = p2
         # TODO: Replace the sett intersection with the thresholding code below
         self.pattern1threshold = (
-            10  # sort of feature selection, based on the availability
+            p1_t  # sort of feature selection, based on the availability
         )
         self.pattern2threshold = (
-            10  # sort of feature selection, based on the availability
+            p2_t  # sort of feature selection, based on the availability
         )
         self.common_features = []
         for feature in self.pattern1.keys():
