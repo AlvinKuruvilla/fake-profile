@@ -28,10 +28,16 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
         if isinstance(platform_id, list):
             # Should only contain an inclusive range of the starting id and ending id
             assert len(platform_id) == 2
-            return df[
-                (df["user_ids"] == user_id)
-                & (df["platform_id"].between(platform_id[0], platform_id[1]))
-            ]
+            if platform_id[0] < platform_id[1]:
+                return df[
+                    (df["user_ids"] == user_id)
+                    & (df["platform_id"].between(platform_id[0], platform_id[1]))
+                ]
+            else:
+                return df[
+                    (df["user_ids"] == user_id)
+                    & (df["platform_id"].between(platform_id[1], platform_id[0]))
+                ]
 
         return df[(df["user_ids"] == user_id) & (df["platform_id"] == platform_id)]
     if isinstance(session_id, list):
@@ -68,6 +74,7 @@ class HeatMap:
         # are automatically so we don't need to keep changing it manually
         ids = [num for num in range(1, 26) if num != 22]
         for i in track(ids):
+            print(i)
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kht_data_from_df(df)
             row = []
