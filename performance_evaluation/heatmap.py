@@ -3,7 +3,7 @@ import sys
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
-from classifiers.template_generator import read_compact_format
+from classifiers.template_generator import read_compact_format, all_ids
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
 from rich.progress import track
 import classifiers.verifiers_library as vl
@@ -28,20 +28,40 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
         if isinstance(platform_id, list):
             # Should only contain an inclusive range of the starting id and ending id
             assert len(platform_id) == 2
-            return df[
-                (df["user_ids"] == user_id)
-                & (df["platform_id"].between(platform_id[0], platform_id[1]))
-            ]
+            if platform_id[0] < platform_id[1]:
+                return df[
+                    (df["user_ids"] == user_id)
+                    & (df["platform_id"].between(platform_id[0], platform_id[1]))
+                ]
+            else:
+                return df[
+                    (df["user_ids"] == user_id)
+                    & (df["platform_id"].between(platform_id[1], platform_id[0]))
+                ]
 
         return df[(df["user_ids"] == user_id) & (df["platform_id"] == platform_id)]
     if isinstance(session_id, list):
         # Should only contain an inclusive range of the starting id and ending id
-        assert len(session_id) == 2
-        return df[
-            (df["user_ids"] == user_id)
-            & (df["platform_id"] == platform_id)
-            & (df["session_id"].between(session_id[0], session_id[1]))
-        ]
+        if len(session_id) == 2:
+            return df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].between(session_id[0], session_id[1]))
+            ]
+        elif len(session_id) > 2:
+            test = df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].isin(session_id))
+            ]
+            # print(session_id)
+            # print(test["session_id"].unique())
+            # input()
+            return df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].isin(session_id))
+            ]
 
     return df[
         (df["user_ids"] == user_id)
@@ -51,8 +71,10 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
 
 
 class HeatMap:
-    def __init__(self, verifier_type):
+    def __init__(self, verifier_type, p1=10, p2=10):
         self.verifier_type = verifier_type  # The verifier class to be used
+        self.p1_threshold = p1
+        self.p2_threshold = p2
         print(f"----selected {verifier_type}")
 
     def make_kht_matrix(
@@ -64,8 +86,9 @@ class HeatMap:
         matrix = []
         # TODO: We have to do a better job of figuring out how many users there
         # are automatically so we don't need to keep changing it manually
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
+            print(i)
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kht_data_from_df(df)
             row = []
@@ -74,7 +97,7 @@ class HeatMap:
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 probe = create_kht_data_from_df(df)
-                v = vl.Verify(enrollment, probe)
+                v = vl.Verify(enrollment, probe, self.p1_threshold, self.p2_threshold)
                 if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
                 elif self.verifier_type == VerifierType.SIMILARITY:
@@ -103,7 +126,7 @@ class HeatMap:
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kit_data_from_df(df, kit_feature_type)
@@ -140,7 +163,7 @@ class HeatMap:
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             kht_enrollment = create_kht_data_from_df(df)

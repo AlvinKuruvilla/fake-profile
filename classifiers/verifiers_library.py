@@ -1,9 +1,11 @@
+import os
 import statistics
+import json
 from classifiers.ecdf import ECDF
 
 
 class Verify:
-    def __init__(self, p1, p2):
+    def __init__(self, p1, p2, p1_t=10, p2_t=10):
         # p1 and p2 are dictionaries of features
         # keys in the dictionaries would be the feature names
         # feature names mean individual letters for KHT
@@ -14,23 +16,27 @@ class Verify:
         self.pattern2 = p2
         # TODO: Replace the sett intersection with the thresholding code below
         self.pattern1threshold = (
-            10  # sort of feature selection, based on the availability
+            p1_t  # sort of feature selection, based on the availability
         )
         self.pattern2threshold = (
-            10  # sort of feature selection, based on the availability
+            p2_t  # sort of feature selection, based on the availability
         )
+        with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
+            config = json.load(f)
         self.common_features = []
-        for feature in self.pattern1.keys():
-            if feature in self.pattern2.keys():
-                if (
-                    len(self.pattern1[feature]) >= self.pattern1threshold
-                    and len(self.pattern2[feature]) >= self.pattern2threshold
-                ):
-                    self.common_features.append(feature)
+        if config["use_feature_selection"]:
+            for feature in self.pattern1.keys():
+                if feature in self.pattern2.keys():
+                    if (
+                        len(self.pattern1[feature]) >= self.pattern1threshold
+                        and len(self.pattern2[feature]) >= self.pattern2threshold
+                    ):
+                        self.common_features.append(feature)
+        else:
+            self.common_features = set(self.pattern1.keys()).intersection(
+                set(self.pattern2.keys())
+            )
         print(f"comparing {len(self.common_features)} common_features")
-        # self.common_features = set(self.pattern1.keys()).intersection(
-        #     set(self.pattern2.keys())
-        # )
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
