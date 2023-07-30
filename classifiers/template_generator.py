@@ -17,3 +17,7 @@ def read_compact_format():
     )
     # print(df.head())
     return df
+
+
+def all_ids():
+    return [num for num in range(1, 26) if num != 22]

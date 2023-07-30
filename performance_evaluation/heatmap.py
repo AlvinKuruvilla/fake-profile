@@ -3,7 +3,7 @@ import sys
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
-from classifiers.template_generator import read_compact_format
+from classifiers.template_generator import read_compact_format, all_ids
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
 from rich.progress import track
 import classifiers.verifiers_library as vl
@@ -86,7 +86,7 @@ class HeatMap:
         matrix = []
         # TODO: We have to do a better job of figuring out how many users there
         # are automatically so we don't need to keep changing it manually
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
             print(i)
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
@@ -126,7 +126,7 @@ class HeatMap:
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             enrollment = create_kit_data_from_df(df, kit_feature_type)
@@ -163,7 +163,7 @@ class HeatMap:
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
-        ids = [num for num in range(1, 26) if num != 22]
+        ids = all_ids()
         for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             kht_enrollment = create_kht_data_from_df(df)

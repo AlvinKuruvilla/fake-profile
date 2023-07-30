@@ -1,4 +1,5 @@
 import random
+from classifiers.template_generator import all_ids
 import classifiers.verifiers_library as vl
 from rich.progress import track
 
@@ -30,7 +31,7 @@ def is_fake_profile(verdicts):
 
 
 def itad_test():
-    ids = [num for num in range(1, 26) if num != 22]
+    ids = all_ids()
     for user_id in ids:
         enrollment = user_id
         probe = user_id
@@ -55,7 +56,7 @@ def get_actual_designation(enrollment_id, probe_id):
 
 def main():
     correct = 0
-    ids = [num for num in range(1, 26) if num != 22]
+    ids = all_ids()
     for _ in track(range(100)):
         enrollment = random.choice(ids)
         probe = random.choice(ids)
