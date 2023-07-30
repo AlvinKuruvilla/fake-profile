@@ -1,4 +1,5 @@
 import os
+import json
 import pandas as pd
 import pickle
 import statistics
@@ -6,6 +7,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import top_k_accuracy_score
+from classifiers.template_generator import Genders, all_ids
 from performance_evaluation.heatmap import HeatMap, VerifierType
 from tabulate import tabulate
 
@@ -77,16 +79,50 @@ def make_validation_matrix(id_set):
     return rows
 
 
-if os.path.exists("cross_validation.obj"):
-    with open("cross_validation.obj", "rb") as f:
-        rows = pickle.load(f)
-else:
-    id_set = [num for num in range(1, 26) if num != 22]
-    rows = make_validation_matrix(id_set)
-    with open("cross_validation.obj", "wb") as f:
-        pickle.dump(rows, f)
-table = tabulate(
-    rows, headers=["Platform", "ITAD", "Similarity", "Absolute"], tablefmt="plain"
-)
-heatmap_table(rows)
-print(table)
+def main():
+    id_set = all_ids()
+    with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
+        config = json.load(f)
+    gender = str(config["gender"])
+    if gender == Genders.ALL():
+        if os.path.exists("all_cross_validation.obj"):
+            with open("all_cross_validation.obj", "rb") as f:
+                rows = pickle.load(f)
+        else:
+            rows = make_validation_matrix(id_set)
+            with open("all_cross_validation.obj", "wb") as f:
+                pickle.dump(rows, f)
+    elif gender == Genders.MALE():
+        if os.path.exists("male_cross_validation.obj"):
+            with open("male_cross_validation.obj", "rb") as f:
+                rows = pickle.load(f)
+        else:
+            rows = make_validation_matrix(id_set)
+            with open("male_cross_validation.obj", "wb") as f:
+                pickle.dump(rows, f)
+    elif gender == Genders.FEMALE():
+        if os.path.exists("female_cross_validation.obj"):
+            with open("female_cross_validation.obj", "rb") as f:
+                rows = pickle.load(f)
+        else:
+            rows = make_validation_matrix(id_set)
+            with open("female_cross_validation.obj", "wb") as f:
+                pickle.dump(rows, f)
+    elif gender == Genders.OTHER():
+        if os.path.exists("other_cross_validation.obj"):
+            with open("other_cross_validation.obj", "rb") as f:
+                rows = pickle.load(f)
+        else:
+            rows = make_validation_matrix(id_set)
+            with open("other_cross_validation.obj", "wb") as f:
+                pickle.dump(rows, f)
+
+    table = tabulate(
+        rows, headers=["Platform", "ITAD", "Similarity", "Absolute"], tablefmt="plain"
+    )
+    heatmap_table(rows)
+    print(table)
+
+
+if __name__ == "__main__":
+    main()

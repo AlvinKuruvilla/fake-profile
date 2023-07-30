@@ -1,3 +1,4 @@
 {
-    "use_feature_selection": true
+    "use_feature_selection": true,
+    "gender": "female"
 }
