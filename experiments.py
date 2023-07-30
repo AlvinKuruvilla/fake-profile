@@ -15,8 +15,8 @@ def print_k_table(matrix, ids):
     print(table)
 
 
-def same_platform_even_split():
-    heatmap = HeatMap(VerifierType.ITAD)
+def same_platform_even_split(p1, p2):
+    heatmap = HeatMap(VerifierType.ABSOLUTE, p1, p2)
 
     matrix = heatmap.combined_keystroke_matrix(1, 1, [1, 3], [4, 6], 1)
     matrix2 = heatmap.combined_keystroke_matrix(2, 2, [1, 3], [4, 6], 1)
@@ -48,8 +48,8 @@ def train_session_one_test_two():
     print_k_table(matrix=matrix3, ids=ids)
 
 
-def simple_cross_platform():
-    heatmap = HeatMap(VerifierType.ABSOLUTE)
+def train_on_one_test_another():
+    heatmap = HeatMap(VerifierType.SIMILARITY)
 
     matrix = heatmap.combined_keystroke_matrix(1, 2, None, None, 1)
     matrix2 = heatmap.combined_keystroke_matrix(1, 3, None, None, 1)
@@ -57,6 +57,35 @@ def simple_cross_platform():
     matrix4 = heatmap.combined_keystroke_matrix(2, 3, None, None, 1)
     matrix5 = heatmap.combined_keystroke_matrix(3, 1, None, None, 1)
     matrix6 = heatmap.combined_keystroke_matrix(3, 2, None, None, 1)
+    ids = [num for num in range(1, 26) if num != 22]
+    print()
+    print("F vs. I")
+    print_k_table(matrix=matrix, ids=ids)
+    input()
+    print("F vs. T")
+    print_k_table(matrix=matrix2, ids=ids)
+    input()
+    print("I vs. F")
+    print_k_table(matrix=matrix3, ids=ids)
+    input()
+    print("I vs. T")
+    print_k_table(matrix=matrix4, ids=ids)
+    input()
+    print("T vs. F")
+    print_k_table(matrix=matrix5, ids=ids)
+    input()
+    print("T vs. I")
+    print_k_table(matrix=matrix6, ids=ids)
+
+
+def cross_platform_2v1():
+    heatmap = HeatMap(VerifierType.ABSOLUTE)
+    matrix = heatmap.combined_keystroke_matrix([1, 2], 3, None, None, 1)
+    matrix2 = heatmap.combined_keystroke_matrix([1, 3], 2, None, None, 1)
+    matrix3 = heatmap.combined_keystroke_matrix([2, 1], 3, None, None, 1)
+    matrix4 = heatmap.combined_keystroke_matrix([2, 3], 1, None, None, 1)
+    matrix5 = heatmap.combined_keystroke_matrix([3, 1], 2, None, None, 1)
+    matrix6 = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
     ids = [num for num in range(1, 26) if num != 22]
     print()
     print("FI")
@@ -78,19 +107,4 @@ def simple_cross_platform():
     print_k_table(matrix=matrix6, ids=ids)
 
 
-def cross_platform_2v1():
-    heatmap = HeatMap(VerifierType.ITAD)
-    matrix = heatmap.combined_keystroke_matrix([1, 2], 3, None, None, 1)
-    matrix2 = heatmap.combined_keystroke_matrix([1, 3], 2, None, None, 1)
-    matrix3 = heatmap.combined_keystroke_matrix([2, 3], 1, None, None, 1)
-    ids = [num for num in range(1, 26) if num != 22]
-    print()
-    print("Facebook")
-    print_k_table(matrix=matrix, ids=ids)
-    print("Instagram")
-    print_k_table(matrix=matrix2, ids=ids)
-    print("Twitter")
-    print_k_table(matrix=matrix3, ids=ids)
-
-
-same_platform_even_split()
+train_on_one_test_another()
