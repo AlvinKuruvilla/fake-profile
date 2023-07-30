@@ -13,24 +13,24 @@ from tabulate import tabulate
 def six_fold_validation(platform, ids, verifier_type: VerifierType):
     heatmap = HeatMap(verifier_type)
     cv = []
-    mat1 = heatmap.combined_keystroke_matrix(platform, platform, [1, 5], 6, 1)
-    mat2 = heatmap.combined_keystroke_matrix(platform, platform, [2, 6], 1, 1)
-    mat3 = heatmap.combined_keystroke_matrix(platform, platform, [1, 3, 4, 5, 6], 2, 1)
-    mat4 = heatmap.combined_keystroke_matrix(platform, platform, [1, 2, 4, 5, 6], 3, 1)
-    mat5 = heatmap.combined_keystroke_matrix(platform, platform, [1, 2, 3, 5, 6], 4, 1)
-    mat6 = heatmap.combined_keystroke_matrix(platform, platform, [1, 2, 3, 4, 6], 5, 1)
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat1), k=i))
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat2), k=i))
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat3), k=i))
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat4), k=i))
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat5), k=i))
-    for i in range(1, 5):
-        cv.append(top_k_accuracy_score(np.array(ids), np.array(mat6), k=i))
+
+    # Define the configurations for the heatmap.combined_keystroke_matrix function
+    configurations = [
+        (platform, platform, [1, 5], 6),
+        (platform, platform, [2, 6], 1),
+        (platform, platform, [1, 3, 4, 5, 6], 2),
+        (platform, platform, [1, 2, 4, 5, 6], 3),
+        (platform, platform, [1, 2, 3, 5, 6], 4),
+        (platform, platform, [1, 2, 3, 4, 6], 5),
+    ]
+
+    for config in configurations:
+        platform, session, key_order, user = config
+        matrix = heatmap.combined_keystroke_matrix(
+            platform, session, key_order, user, 1
+        )
+        for i in range(1, 5):
+            cv.append(top_k_accuracy_score(np.array(ids), np.array(matrix), k=i))
 
     return statistics.mean(cv)
 
@@ -48,11 +48,7 @@ def heatmap_table(matrix):
     plt.savefig("cross_validation.png")
 
 
-if os.path.exists("cross_validation.obj"):
-    with open("cross_validation.obj", "rb") as f:
-        rows = pickle.load(f)
-else:
-    id_set = [num for num in range(1, 26) if num != 22]
+def make_validation_matrix(id_set):
     rows = []
     rows.append(
         [
@@ -78,6 +74,15 @@ else:
             six_fold_validation(3, id_set, VerifierType.ABSOLUTE),
         ]
     )
+    return rows
+
+
+if os.path.exists("cross_validation.obj"):
+    with open("cross_validation.obj", "rb") as f:
+        rows = pickle.load(f)
+else:
+    id_set = [num for num in range(1, 26) if num != 22]
+    rows = make_validation_matrix(id_set)
     with open("cross_validation.obj", "wb") as f:
         pickle.dump(rows, f)
 table = tabulate(
