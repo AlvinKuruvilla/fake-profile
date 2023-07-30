@@ -42,12 +42,26 @@ def get_user_by_platform(user_id, platform_id, session_id=None):
         return df[(df["user_ids"] == user_id) & (df["platform_id"] == platform_id)]
     if isinstance(session_id, list):
         # Should only contain an inclusive range of the starting id and ending id
-        assert len(session_id) == 2
-        return df[
-            (df["user_ids"] == user_id)
-            & (df["platform_id"] == platform_id)
-            & (df["session_id"].between(session_id[0], session_id[1]))
-        ]
+        if len(session_id) == 2:
+            return df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].between(session_id[0], session_id[1]))
+            ]
+        elif len(session_id) > 2:
+            test = df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].isin(session_id))
+            ]
+            # print(session_id)
+            # print(test["session_id"].unique())
+            # input()
+            return df[
+                (df["user_ids"] == user_id)
+                & (df["platform_id"] == platform_id)
+                & (df["session_id"].isin(session_id))
+            ]
 
     return df[
         (df["user_ids"] == user_id)
