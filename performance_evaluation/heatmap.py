@@ -3,7 +3,7 @@ import sys
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
-from classifiers.template_generator import read_compact_format, all_ids
+from classifiers.template_generator import all_ids, read_compact_format
 from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
 from rich.progress import track
 import classifiers.verifiers_library as vl
@@ -125,6 +125,7 @@ class HeatMap:
         #     raise ValueError("Platform ID must be between 1 and 3")
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
+        print(self.verifier_type)
         matrix = []
         ids = all_ids()
         for i in track(ids):

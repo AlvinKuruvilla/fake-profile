@@ -81,7 +81,7 @@ class Verify:
             try:
                 pattern1_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:
-                print("In error: ", self.pattern1[feature])
+                # print("In error: ", self.pattern1[feature])
                 if len(self.pattern1[feature]) == 1:
                     pattern1_stdev = self.pattern1[feature][0] / 4
                 else:
@@ -114,7 +114,7 @@ class Verify:
             try:
                 template_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:
-                print("In error: ", self.pattern1[feature])
+                # print("In error: ", self.pattern1[feature])
                 if len(self.pattern1[feature]) == 1:
                     template_stdev = self.pattern1[feature][0] / 4
                 else:
