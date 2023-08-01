@@ -56,3 +56,4 @@ class ScoreFuser:
                     similarity_matrix_element,
                     absolute_matrix_element,
                 )
+        return res_matrix
