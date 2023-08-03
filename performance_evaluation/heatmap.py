@@ -4,9 +4,14 @@ import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
 from classifiers.template_generator import all_ids, read_compact_format
-from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
+from features.keystroke_features import (
+    create_kht_data_from_df,
+    create_kit_data_from_df,
+    word_hold,
+)
 from rich.progress import track
 import classifiers.verifiers_library as vl
+from features.word_parser import SentenceParser
 
 path = os.path.dirname(os.getcwd())
 print(path)
@@ -169,13 +174,18 @@ class HeatMap:
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
             kht_enrollment = create_kht_data_from_df(df)
             kit_enrollment = create_kit_data_from_df(df, kit_feature_type)
-            combined_enrollment = kht_enrollment | kit_enrollment
+            sp = SentenceParser(os.path.join(os.getcwd(), "cleaned2.csv"))
+            word_list = sp.get_words(df)
+            word_hold_enrollment = word_hold(word_list, df)
+            combined_enrollment = kht_enrollment | kit_enrollment | word_hold_enrollment
             row = []
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 kht_probe = create_kht_data_from_df(df)
                 kit_probe = create_kit_data_from_df(df, kit_feature_type)
-                combined_probe = kht_probe | kit_probe
+                word_list = sp.get_words(df)
+                word_hold_probe = word_hold(word_list, df)
+                combined_probe = kht_probe | kit_probe | word_hold_probe
                 v = vl.Verify(combined_enrollment, combined_probe)
                 if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
