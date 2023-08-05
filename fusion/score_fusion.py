@@ -39,7 +39,7 @@ class ScoreFuser:
             == len([row[0] for row in self.itad_matrix])
         )
 
-    def find_matching_score(self, algorithm: FusionAlgorithm):
+    def find_matrix(self, algorithm: FusionAlgorithm):
         rows = len(self.absolute_matrix)
         cols = len([row[0] for row in self.absolute_matrix])
         res_matrix = [[0 for _ in range(cols)] for _ in range(rows)]
