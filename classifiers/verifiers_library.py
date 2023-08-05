@@ -36,7 +36,7 @@ class Verify:
             self.common_features = set(self.pattern1.keys()).intersection(
                 set(self.pattern2.keys())
             )
-        print(f"comparing {len(self.common_features)} common_features")
+        # print(f"comparing {len(self.common_features)} common_features")
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,
@@ -142,7 +142,7 @@ class Verify:
     def itad_similarity(self):  # The new one
         # https://www.scitepress.org/Papers/2023/116841/116841.pdf
         if len(self.common_features) == 0:  # this wont happen at all, but just in case
-            print("dig deeper: there is no common feature to match!")
+            # print("dig deeper: there is no common feature to match!")
             return 0
         similarities = []
         for feature in self.common_features:
@@ -160,7 +160,7 @@ class Verify:
         if (
             len(self.common_features) == 0
         ):  # this needs to be checked further when and why and for which users or cases it might hapens at all
-            print("dig deeper: there is no common feature to match!")
+            # print("dig deeper: there is no common feature to match!")
             return 0
         grand_sum = 0
         number_of_instances_compared = 0

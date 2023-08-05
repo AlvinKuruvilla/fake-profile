@@ -11,7 +11,7 @@ def create_kht_data_from_df(df):
 def create_kit_data_from_df(df, kit_feature_type):
     kit_dict = defaultdict(list)
     if df.empty:
-        print("dig deeper: dataframe is empty!")
+        # print("dig deeper: dataframe is empty!")
         return kit_dict
     num_rows = len(df.index)
     for i in range(num_rows):
