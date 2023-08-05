@@ -142,8 +142,9 @@ def cross_platform_2v1():
     print_k_table(matrix=matrix6, ids=ids)
 
 
-with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
-    config = json.load(f)
-print("Using feature selection is: ", config["use_feature_selection"])
-query_yes_no("Proceed?")
-train_on_one_test_another()
+if __name__ == "__main__":
+    with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
+        config = json.load(f)
+    print("Using feature selection is: ", config["use_feature_selection"])
+    query_yes_no("Proceed?")
+    train_on_one_test_another()
