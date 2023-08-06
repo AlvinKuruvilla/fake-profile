@@ -83,5 +83,21 @@ def platform_fusion_cross_test():
         print_k_table(matrix=res, ids=ids)
 
 
+def double_platform_fusion_cross_test():
+    heatmap = HeatMap(VerifierType.SIMILARITY)
+    similarity_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    heatmap = HeatMap(VerifierType.ABSOLUTE)
+    absolute_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    heatmap = HeatMap(VerifierType.ITAD)
+    itad_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    sf = ScoreFuser(itad_matrix, similarity_matrix, absolute_matrix)
+    for fusion_algorithm in FusionAlgorithm:
+        res = sf.find_matrix(fusion_algorithm)
+        ids = all_ids()
+        print(fusion_algorithm)
+        print("TI")
+        print_k_table(matrix=res, ids=ids)
+
+
 if __name__ == "__main__":
-    platform_fusion_cross_test()
+    double_platform_fusion_cross_test()
