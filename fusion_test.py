@@ -83,21 +83,33 @@ def platform_fusion_cross_test():
         print_k_table(matrix=res, ids=ids)
 
 
-def double_platform_fusion_cross_test():
+def platform_even_split_fusion_cross_test():
     heatmap = HeatMap(VerifierType.SIMILARITY)
-    similarity_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    similarity_matrix = heatmap.combined_keystroke_matrix(3, 3, [1, 3], [4, 6], 1)
     heatmap = HeatMap(VerifierType.ABSOLUTE)
-    absolute_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    absolute_matrix = heatmap.combined_keystroke_matrix(3, 3, [1, 3], [4, 6], 1)
     heatmap = HeatMap(VerifierType.ITAD)
-    itad_matrix = heatmap.combined_keystroke_matrix([3, 2], 1, None, None, 1)
+    itad_matrix = heatmap.combined_keystroke_matrix(3, 3, [1, 3], [4, 6], 1)
     sf = ScoreFuser(itad_matrix, similarity_matrix, absolute_matrix)
-    for fusion_algorithm in FusionAlgorithm:
-        res = sf.find_matrix(fusion_algorithm)
-        ids = all_ids()
-        print(fusion_algorithm)
-        print("TI")
-        print_k_table(matrix=res, ids=ids)
+    res = sf.find_matrix(FusionAlgorithm.MEDIAN)
+    ids = all_ids()
+    print("Facebook - even split")
+    print_k_table(matrix=res, ids=ids)
+
+
+def single_platform_cross_test():
+    heatmap = HeatMap(VerifierType.ABSOLUTE)
+    absolute_matrix = heatmap.combined_keystroke_matrix(3, 2, None, None, 1)
+    heatmap = HeatMap(VerifierType.SIMILARITY)
+    similarity_matrix = heatmap.combined_keystroke_matrix(3, 2, None, None, 1)
+    heatmap = HeatMap(VerifierType.ITAD)
+    itad_matrix = heatmap.combined_keystroke_matrix(3, 2, None, None, 1)
+    sf = ScoreFuser(itad_matrix, similarity_matrix, absolute_matrix)
+    res = sf.find_matrix(FusionAlgorithm.MEAN)
+    ids = all_ids()
+    print("T vs. I")
+    print_k_table(matrix=res, ids=ids)
 
 
 if __name__ == "__main__":
-    double_platform_fusion_cross_test()
+    single_platform_cross_test()
