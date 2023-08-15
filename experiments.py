@@ -1,8 +1,42 @@
+import sys
+import os
+import json
 import numpy as np
 from sklearn.metrics import top_k_accuracy_score
 from classifiers.template_generator import all_ids
 from performance_evaluation.heatmap import HeatMap, VerifierType
 from tabulate import tabulate
+
+
+def query_yes_no(question, default="yes"):
+    """Ask a yes/no question via raw_input() and return their answer.
+
+    "question" is a string that is presented to the user.
+    "default" is the presumed answer if the user just hits <Enter>.
+            It must be "yes" (the default), "no" or None (meaning
+            an answer is required of the user).
+
+    The "answer" return value is True for "yes" or False for "no".
+    """
+    valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
+    if default is None:
+        prompt = " [y/n] "
+    elif default == "yes":
+        prompt = " [Y/n] "
+    elif default == "no":
+        prompt = " [y/N] "
+    else:
+        raise ValueError("invalid default answer: '%s'" % default)
+
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = input().lower()
+        if default is not None and choice == "":
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
 
 
 def print_k_table(matrix, ids):
@@ -16,8 +50,8 @@ def print_k_table(matrix, ids):
     print(table)
 
 
-def same_platform_even_split(p1, p2):
-    heatmap = HeatMap(VerifierType.ABSOLUTE, p1, p2)
+def same_platform_even_split():
+    heatmap = HeatMap(VerifierType.SIMILARITY)
 
     matrix = heatmap.combined_keystroke_matrix(1, 1, [1, 3], [4, 6], 1)
     matrix2 = heatmap.combined_keystroke_matrix(2, 2, [1, 3], [4, 6], 1)
@@ -108,4 +142,9 @@ def cross_platform_2v1():
     print_k_table(matrix=matrix6, ids=ids)
 
 
-train_on_one_test_another()
+if __name__ == "__main__":
+    with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
+        config = json.load(f)
+    print("Using feature selection is: ", config["use_feature_selection"])
+    query_yes_no("Proceed?")
+    train_on_one_test_another()

@@ -1,3 +1,5 @@
 {
-    "use_feature_selection": true
+    "use_feature_selection": false,
+    "use_word_holder": false,
+    "gender": "all"
 }

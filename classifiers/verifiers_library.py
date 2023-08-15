@@ -81,7 +81,7 @@ class Verify:
             try:
                 pattern1_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:
-                print("In error: ", self.pattern1[feature])
+                # print("In error: ", self.pattern1[feature])
                 if len(self.pattern1[feature]) == 1:
                     pattern1_stdev = self.pattern1[feature][0] / 4
                 else:
@@ -114,7 +114,7 @@ class Verify:
             try:
                 template_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:
-                print("In error: ", self.pattern1[feature])
+                # print("In error: ", self.pattern1[feature])
                 if len(self.pattern1[feature]) == 1:
                     template_stdev = self.pattern1[feature][0] / 4
                 else:
@@ -142,7 +142,7 @@ class Verify:
     def itad_similarity(self):  # The new one
         # https://www.scitepress.org/Papers/2023/116841/116841.pdf
         if len(self.common_features) == 0:  # this wont happen at all, but just in case
-            print("dig deeper: there is no common feature to match!")
+            # print("dig deeper: there is no common feature to match!")
             return 0
         similarities = []
         for feature in self.common_features:
@@ -160,7 +160,7 @@ class Verify:
         if (
             len(self.common_features) == 0
         ):  # this needs to be checked further when and why and for which users or cases it might hapens at all
-            print("dig deeper: there is no common feature to match!")
+            # print("dig deeper: there is no common feature to match!")
             return 0
         grand_sum = 0
         number_of_instances_compared = 0

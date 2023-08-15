@@ -1,12 +1,18 @@
 import os
+import json
 import sys
 import enum
 import matplotlib.pyplot as plt
 import seaborn as sns
-from classifiers.template_generator import read_compact_format, all_ids
-from features.keystroke_features import create_kht_data_from_df, create_kit_data_from_df
+from classifiers.template_generator import all_ids, read_compact_format
+from features.keystroke_features import (
+    create_kht_data_from_df,
+    create_kit_data_from_df,
+    word_hold,
+)
 from rich.progress import track
 import classifiers.verifiers_library as vl
+from features.word_parser import SentenceParser
 
 path = os.path.dirname(os.getcwd())
 print(path)
@@ -75,6 +81,8 @@ class HeatMap:
         self.verifier_type = verifier_type  # The verifier class to be used
         self.p1_threshold = p1
         self.p2_threshold = p2
+        with open(os.path.join(os.getcwd(), "classifier_config.json"), "r") as f:
+            self.config = json.load(f)
         print(f"----selected {verifier_type}")
 
     def make_kht_matrix(
@@ -125,6 +133,7 @@ class HeatMap:
         #     raise ValueError("Platform ID must be between 1 and 3")
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
+        print(self.verifier_type)
         matrix = []
         ids = all_ids()
         for i in track(ids):
@@ -160,6 +169,7 @@ class HeatMap:
     ):
         # if not 1 <= enroll_platform_id <= 3 or not 1 <= probe_platform_id <= 3:
         #     raise ValueError("Platform ID must be between 1 and 3")
+
         if not 1 <= kit_feature_type <= 4:
             raise ValueError("KIT feature type must be between 1 and 4")
         matrix = []
@@ -170,13 +180,26 @@ class HeatMap:
             print(f'probe_platform_id: {probe_platform_id}, probe_session_id: {probe_session_id}, df.shape: {df.shape}')
             kht_enrollment = create_kht_data_from_df(df)
             kit_enrollment = create_kit_data_from_df(df, kit_feature_type)
-            combined_enrollment = kht_enrollment | kit_enrollment
+            if self.config["use_word_holder"]:
+                sp = SentenceParser(os.path.join(os.getcwd(), "cleaned2.csv"))
+                word_list = sp.get_words(df)
+                word_hold_enrollment = word_hold(word_list, df)
+                combined_enrollment = (
+                    kht_enrollment | kit_enrollment | word_hold_enrollment
+                )
+            else:
+                combined_enrollment = kht_enrollment | kit_enrollment
             row = []
             for j in ids:
                 df = get_user_by_platform(j, probe_platform_id, probe_session_id)
                 kht_probe = create_kht_data_from_df(df)
                 kit_probe = create_kit_data_from_df(df, kit_feature_type)
-                combined_probe = kht_probe | kit_probe
+                if self.config["use_word_holder"]:
+                    word_list = sp.get_words(df)
+                    word_hold_probe = word_hold(word_list, df)
+                    combined_probe = kht_probe | kit_probe | word_hold_probe
+                else:
+                    combined_probe = kht_probe | kit_probe
                 v = vl.Verify(combined_enrollment, combined_probe)
                 if self.verifier_type == VerifierType.ABSOLUTE:
                     row.append(v.get_abs_match_score())
