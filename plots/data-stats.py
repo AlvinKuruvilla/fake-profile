@@ -9,7 +9,7 @@ labels_handedness = ['Left', 'Right']
 sizes_handedness = [13.6, 86.4]
 
 labels_platform = ['Facebook', 'Instagram', 'Twitter']
-sizes_platform = [1154, 859, 706]
+sizes_platform = [29997, 22317, 18332]
 
 labels_session = ['1', '2', '3', '4', '5', '6']
 sizes_session = [2462, 1981, 1983, 1787, 1809, 1730]
