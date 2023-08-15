@@ -36,7 +36,7 @@ class Verify:
             self.common_features = set(self.pattern1.keys()).intersection(
                 set(self.pattern2.keys())
             )
-        print(f"comparing {len(self.common_features)} common_features")
+        # print(f"comparing {len(self.common_features)} common_features")
 
     def get_abs_match_score(self):  # A verifier
         if len(self.common_features) == 0:  # if there exist no common features,

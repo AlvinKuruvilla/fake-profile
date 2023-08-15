@@ -1,0 +1,796 @@
+/Users/rk042/miniforge3/bin/python3 /Users/rk042/PycharmProjects/fake-profile/performance_evaluation/heatmap_test.py
+/Users/rk042/PycharmProjects/fake-profile
+----selected VerifierType.ITAD
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (435, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (435, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (415, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (415, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (314, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (314, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (261, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (261, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (185, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (185, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (358, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (358, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (418, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (418, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (131, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (131, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (196, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (196, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (360, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (360, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (919, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (919, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (634, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (634, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (256, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (256, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (218, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (218, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (405, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (405, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (238, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (238, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (798, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (798, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (252, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (252, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (523, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (523, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (378, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (378, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (273, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (273, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (120, 6)
+probe_platform_id: 2, probe_session_id: 1, df.shape: (120, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+Working... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:49
+shape of matrix: row: 24, cols: 24
+k=1 :  0.9166666666666666
+k=2 :  0.9166666666666666
+k=3 :  0.9166666666666666
+k=4 :  0.9166666666666666
+k=5 :  0.9166666666666666
+----selected VerifierType.ITAD
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (435, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (435, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (415, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (415, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (314, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (314, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (261, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (261, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (185, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (185, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (358, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (358, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (418, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (418, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (131, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (131, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (196, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (196, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (360, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (360, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (919, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (919, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (634, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (634, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (256, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (256, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (218, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (218, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (405, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (405, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (238, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (238, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (798, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (798, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (252, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (252, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (523, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (523, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (378, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (378, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (273, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (273, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (120, 6)
+probe_platform_id: 2, probe_session_id: 2, df.shape: (120, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+Working... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:48
+shape of matrix: row: 24, cols: 24
+k=1 :  0.5416666666666666
+k=2 :  0.5833333333333334
+k=3 :  0.6666666666666666
+k=4 :  0.7083333333333334
+k=5 :  0.7083333333333334
+----selected VerifierType.ITAD
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (349, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (349, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (332, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (332, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (230, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (230, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (122, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (122, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (149, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (149, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (166, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (166, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (371, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (371, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (424, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (424, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (434, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (434, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (340, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (340, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (523, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (523, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (327, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (327, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (321, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (321, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (257, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (257, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (324, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (324, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (200, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (200, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (1002, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (1002, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (241, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (241, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (294, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (294, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (520, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (520, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (199, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (199, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 2, df.shape: (177, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (177, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+Working... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:50
+shape of matrix: row: 24, cols: 24
+k=1 :  0.5
+k=2 :  0.625
+k=3 :  0.7083333333333334
+k=4 :  0.7083333333333334
+k=5 :  0.75
+----selected VerifierType.ITAD
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (435, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (435, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (415, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (415, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (314, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (314, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (261, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (261, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (185, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (185, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (358, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (358, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (418, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (418, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (0, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (0, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (131, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (131, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (196, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (196, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (360, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (360, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (919, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (919, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (634, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (634, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (256, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (256, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (218, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (218, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (405, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (405, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (238, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (238, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (798, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (798, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (252, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (252, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (523, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (523, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (378, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (378, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (273, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (273, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+enroll_platform_id: 2, enroll_session_id: 1, df.shape: (120, 6)
+probe_platform_id: 2, probe_session_id: 3, df.shape: (120, 6)
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+dig deeper: dataframe is empty!
+dig deeper: there is no common feature to match!
+Working... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:51
+shape of matrix: row: 24, cols: 24
+k=1 :  0.4166666666666667
+k=2 :  0.5833333333333334
+k=3 :  0.625
+k=4 :  0.75
+k=5 :  0.75
+
+Process finished with exit code 0
