@@ -65,7 +65,8 @@ axs[3].bar(labels_session,
 axs[3].set_title('Avg keystrokes per video')
 axs[3].set_ylabel('Avg keystrokes')
 axs[3].set_xlabel('video #')
-
+axs[3].yaxis.set_label_position("right")
+axs[3].yaxis.tick_right()
 # Adjusting the layout for better presentation
 plt.tight_layout()
 plt.show()
