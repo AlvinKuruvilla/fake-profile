@@ -19,7 +19,7 @@ def mean_samples_for_platform(platform):
     df = read_compact_format()
     # A "keystroke" is a press and release event together, so we want to divide
     # final answer by 2 because we get both press and release events
-    return math.ceil(len(df[df["platform_id"] == platform]) / 26)
+    return math.ceil(len(df[df["platform_id"] == platform])) / 2
 
 
 def mean_samples_per_session(session_id):
@@ -76,4 +76,4 @@ def keystrokes_per_session():
 
 
 if __name__ == "__main__":
-    keystrokes_per_platform()
+    keystrokes_per_session()
