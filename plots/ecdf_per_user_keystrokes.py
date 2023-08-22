@@ -14,8 +14,8 @@ y = np.arange(1, len(x) + 1) / len(x)
 
 # Defining the color palette
 colors_adjusted = {
-    'medium_blue': '#3a6ea5',
-    'lighter_blue': '#6b9ed6'
+    'silver': '#e6e6fa',
+    'gray': '#808080'
 }
 
 from scipy.interpolate import make_interp_spline
@@ -31,16 +31,15 @@ y_spline = spline(x_spline)
 # Plotting the further smoothed ECDF
 plt.figure(figsize=(12, 7))
 sns.set_style("whitegrid")
-plt.plot(x_spline, y_spline, linestyle='-', color=colors_adjusted['lighter_blue'])
-plt.fill_between(x_spline, y_spline, color=colors_adjusted['lighter_blue'], alpha=0.2)
-plt.title('ECDF', fontsize=16)
-plt.xlabel('Avg. keystrokes', fontsize=14)
+plt.plot(x_spline, y_spline, linestyle='-', color=colors_adjusted['gray'])
+plt.fill_between(x_spline, y_spline, color=colors_adjusted['silver'], alpha=0.2)
+# plt.title('ECDF', fontsize=16)
+plt.xlabel('number of keystrokes', fontsize=14)
 plt.ylabel('F(x)', fontsize=14)
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 plt.grid(True, which="both", ls="--", c='0.7')
-
-# Polishing the plot
+ # Polishing the plot
 sns.despine(left=True, bottom=True)
 
 plt.show()
