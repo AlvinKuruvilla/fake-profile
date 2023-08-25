@@ -19,6 +19,12 @@ def read_compact_format():
     return df
 
 
+def get_user_count():
+    a = list(read_compact_format()["user_ids"].unique())
+    a.sort()
+    return a
+
+
 def get_user_by_platform(user_id, platform_id, session_id=None):
     # print(f"user_id:{user_id}", end=" | ")
     df = read_compact_format()
@@ -66,3 +72,5 @@ if __name__ == "__main__":
     print(fb_missing_ids)
     print(insta_missing_ids)
     print(twitter_missing_ids)
+    print(set(fb_missing_ids).intersection(insta_missing_ids, twitter_missing_ids))
+    print(get_user_count())

@@ -110,7 +110,7 @@ class Verify:
             # raise ValueError("No common features to compare!")
         matches, total = 0, 0
         for feature in self.common_features:
-            enroll_mean = statistics.mean(list(self.pattern1[feature]))
+            enroll_mean = statistics.median(list(self.pattern1[feature]))
             try:
                 template_stdev = statistics.stdev(self.pattern1[feature])
             except statistics.StatisticsError:

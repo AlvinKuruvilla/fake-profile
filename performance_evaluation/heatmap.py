@@ -176,8 +176,12 @@ class HeatMap:
         ids = all_ids()
         for i in track(ids):
             df = get_user_by_platform(i, enroll_platform_id, enroll_session_id)
-            print(f'enroll_platform_id: {enroll_platform_id}, enroll_session_id: {enroll_session_id}, df.shape: {df.shape}')
-            print(f'probe_platform_id: {probe_platform_id}, probe_session_id: {probe_session_id}, df.shape: {df.shape}')
+            print(
+                f"enroll_platform_id: {enroll_platform_id}, enroll_session_id: {enroll_session_id}, df.shape: {df.shape}"
+            )
+            print(
+                f"probe_platform_id: {probe_platform_id}, probe_session_id: {probe_session_id}, df.shape: {df.shape}"
+            )
             kht_enrollment = create_kht_data_from_df(df)
             kit_enrollment = create_kit_data_from_df(df, kit_feature_type)
             if self.config["use_word_holder"]:
