@@ -2,6 +2,7 @@ from collections import defaultdict
 
 
 def create_kht_data_from_df(df):
+    # Compute KHT as the difference between the press and release times for the instance of the key
     kht_dict = defaultdict(list)
     for i, row in df.iterrows():
         kht_dict[row["key"]].append(row["release_time"] - row["press_time"])

@@ -14,7 +14,6 @@ class Verify:
         # feature names can be extended to any features that we can extract from keystrokes
         self.pattern1 = p1
         self.pattern2 = p2
-        # TODO: Replace the sett intersection with the thresholding code below
         self.pattern1threshold = (
             p1_t  # sort of feature selection, based on the availability
         )
